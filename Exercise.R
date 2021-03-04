@@ -15,6 +15,9 @@ high_depression <- BRIGHT_Subset %>% filter(Depress > 20)
 high_depression <- data.frame(high_depression)
 library(ggplot2)
 ggplot(data = surveys, aes(x = weight, y = hindfoot_length)) +geom_point()
-summary(BRIGHT_Subset$Depress)
-
+ggplot(data = BRIGHT_Subset, aes(x = age, y = Depress)) +geom_point()
+# Create a new column in the surveys with weight in Kg
+surveys %>%  mutate(weight_kg = weight / 1000)
+# To create a second new column based on the first new column with the same call of mutate
+surveys$surveys_weight <-surveys %>% mutate(weight_kg = weight/ 1000, weight_lb = weight_kg*2.2)
 view(BRIGHT_Subset)
